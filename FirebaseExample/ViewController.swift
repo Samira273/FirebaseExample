@@ -7,11 +7,20 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 class ViewController: UIViewController {
 
+
+
+    @IBAction func signInByGoogle(_ sender: Any) {
+        
+        GIDSignIn.sharedInstance().signIn()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+
         // Do any additional setup after loading the view.
     }
 
