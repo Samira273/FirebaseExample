@@ -12,5 +12,6 @@ pod 'Firebase/Auth'
 pod 'FacebookLogin'
 pod 'FBSDKCoreKit'
 pod 'FBSDKLoginKit'
+pod 'Firebase/Firestore'
 
 end
