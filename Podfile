@@ -9,5 +9,8 @@ target 'FirebaseExample' do
   pod 'Firebase/Analytics'
 pod 'GoogleSignIn'
 pod 'Firebase/Auth'
+pod 'FacebookLogin'
+pod 'FBSDKCoreKit'
+pod 'FBSDKLoginKit'
 
 end
