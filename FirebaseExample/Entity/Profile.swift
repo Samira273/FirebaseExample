@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+class Profile {
+    var firstName: String?
+    var lastName: String?
+    var coverPicUrl: String?
+    var profilePicUrl: String?
+    var email: String?
+}
