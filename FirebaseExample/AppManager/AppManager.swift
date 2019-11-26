@@ -32,7 +32,6 @@ class AppManager : UIResponder {
     }
     
     static func makeVisibleToSignInViewController() {
-     //   AppManager.window?.rootViewController = SignInViewController(nibName: nil, bundle: nil)
         AppManager.window?.rootViewController = ProfileViewController(nibName: nil, bundle: nil)
         AppManager.window?.makeKeyAndVisible()
     }

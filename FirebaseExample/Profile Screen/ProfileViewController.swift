@@ -138,20 +138,24 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
                 case .none:
                     print("failed isA lol")
         }
-
         controller.dismiss(animated: true, completion: nil)
-//        self.navigationController?.popToViewController(self, animated: true)
-        
     }
 
     func pixelEditViewControllerDidCancelEditing(in controller: PixelEditViewController) {
-        print("cancel editing")
-        self.navigationController?.popToViewController(self, animated: true)
+        switch editPicType {
+        case .coverPic:
+            uploadSelectedPhoto(ofType: .coverPic)
+        case .profilePic:
+            uploadSelectedPhoto(ofType: .profilePic)
+        case .none:
+            print("yalla ya ahbal")
+        }
+        controller.dismiss(animated: true, completion: nil)
     }
-    
 }
 
 enum PicType: String {
+    
     case profilePic
     case coverPic
 }

@@ -14,6 +14,7 @@ class ProfilScreenModel {
      
     var profile = Profile()
     var profileScreenPresenter : ProfileScreenPresenter?
+    let db = Firestore.firestore()
     
     func uploadDataFor(photo: Data, ofType: PicType) {
         var storage = Storage.storage()
@@ -34,17 +35,43 @@ class ProfilScreenModel {
             }
             switch ofType {
             case .profilePic:
-                self.profile.profilePicUrl = photoDownloadURL.absoluteString
+                self.modifyDataInFireStore(for: photoDownloadURL.absoluteString, ofType: .profilePic)
             case .coverPic:
-                self.profile.coverPicUrl = photoDownloadURL.absoluteString
+                self.modifyDataInFireStore(for: photoDownloadURL.absoluteString, ofType: .coverPic)
             }
-            self.profileScreenPresenter?.sendData(profile: self.profile)
+//            self.profileScreenPresenter?.sendData(profile: self.profile)
           }
         }
     }
     
+    func modifyDataInFireStore(for imageUrl: String, ofType: PicType) {
+        let docRef = db.collection("Profiles").document("T4JQzJBWl5HcmPrlX6Ka")
+        switch ofType {
+        case .profilePic:
+             docRef.updateData([
+                       "profilePicUrl": imageUrl
+                   ], completion: { err in
+                       if let err = err {
+                           print("Error updating document: \(err)")
+                       } else {
+                           print("Document successfully updated")
+                       }
+                   })
+        case .coverPic:
+             docRef.updateData([
+                       "coverPicUrl": imageUrl
+                   ], completion: { err in
+                       if let err = err {
+                           print("Error updating document: \(err)")
+                       } else {
+                           print("Document successfully updated")
+                       }
+                   })
+        }
+        self.retrieveDataFromFireStore()
+    }
+    
     func retrieveDataFromFireStore() {
-        let db = Firestore.firestore()
         let docRef = db.collection("Profiles").document("T4JQzJBWl5HcmPrlX6Ka")
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
