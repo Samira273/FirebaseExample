@@ -10,8 +10,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController" customModule="FirebaseExample" customModuleProvider="target">
             <connections>
                 <outlet property="coverPicImageView" destination="brq-hz-etN" id="c9N-Mo-RY5"/>
+                <outlet property="coverUpload" destination="IJa-Np-vV5" id="szK-iT-p2p"/>
                 <outlet property="profileName" destination="4QG-ba-L0N" id="LgR-vT-IRR"/>
                 <outlet property="profilePicImageView" destination="dx3-R2-B48" id="bKH-Si-1Ko"/>
+                <outlet property="profileUpload" destination="gQe-gf-Th8" id="rNF-ZY-WCM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,7 +26,7 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
                         <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="brq-hz-etN">
-                            <rect key="frame" x="15" y="15" width="384" height="245.5"/>
+                            <rect key="frame" x="20.5" y="15" width="373" height="245.5"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4QG-ba-L0N">
                             <rect key="frame" x="15" y="345.5" width="384" height="0.0"/>
@@ -39,30 +41,63 @@
                                 <constraint firstAttribute="width" constant="150" id="e7m-oi-llE"/>
                             </constraints>
                         </imageView>
+                        <button hidden="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJa-Np-vV5">
+                            <rect key="frame" x="358.5" y="225.5" width="35" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="gQP-mw-tLO"/>
+                                <constraint firstAttribute="width" constant="35" id="vyh-Yu-3th"/>
+                            </constraints>
+                            <state key="normal" image="camera" catalog="system"/>
+                            <connections>
+                                <action selector="uploadCoverPhoto:" destination="-1" eventType="touchUpInside" id="Lzd-NP-e8j"/>
+                            </connections>
+                        </button>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQe-gf-Th8">
+                            <rect key="frame" x="189.5" y="300.5" width="35" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="CLX-ne-o0C"/>
+                                <constraint firstAttribute="width" constant="35" id="wlA-GO-VID"/>
+                            </constraints>
+                            <state key="normal" image="camera" catalog="system"/>
+                            <connections>
+                                <action selector="uploadProfilePhoto:" destination="-1" eventType="touchUpInside" id="muy-RM-IJk"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
-                        <constraint firstItem="brq-hz-etN" firstAttribute="height" secondItem="sws-a8-WMl" secondAttribute="height" multiplier="0.3" id="45K-5G-urK"/>
-                        <constraint firstItem="brq-hz-etN" firstAttribute="leading" secondItem="sws-a8-WMl" secondAttribute="leading" constant="15" id="SAE-ga-ohx"/>
-                        <constraint firstAttribute="trailing" secondItem="brq-hz-etN" secondAttribute="trailing" constant="15" id="TVl-R6-kft"/>
+                        <constraint firstItem="brq-hz-etN" firstAttribute="centerX" secondItem="sws-a8-WMl" secondAttribute="centerX" id="3u6-1Y-D9R"/>
+                        <constraint firstItem="gQe-gf-Th8" firstAttribute="centerX" secondItem="dx3-R2-B48" secondAttribute="centerX" id="KkN-fv-lPt"/>
+                        <constraint firstItem="IJa-Np-vV5" firstAttribute="trailing" secondItem="brq-hz-etN" secondAttribute="trailing" id="MvH-5V-YhD"/>
                         <constraint firstItem="4QG-ba-L0N" firstAttribute="top" secondItem="dx3-R2-B48" secondAttribute="bottom" constant="10" id="Z8M-b6-1ls"/>
                         <constraint firstItem="4QG-ba-L0N" firstAttribute="leading" secondItem="sws-a8-WMl" secondAttribute="leading" constant="15" id="Zhf-9X-gn5"/>
+                        <constraint firstItem="brq-hz-etN" firstAttribute="top" secondItem="sws-a8-WMl" secondAttribute="top" constant="15" id="al3-Lz-Ibf"/>
                         <constraint firstItem="dx3-R2-B48" firstAttribute="top" secondItem="brq-hz-etN" secondAttribute="bottom" constant="-75" id="j3n-xC-I55"/>
+                        <constraint firstItem="IJa-Np-vV5" firstAttribute="bottom" secondItem="brq-hz-etN" secondAttribute="bottom" id="maf-hp-yGl"/>
+                        <constraint firstItem="brq-hz-etN" firstAttribute="width" secondItem="sws-a8-WMl" secondAttribute="width" multiplier="0.9" id="oNZ-14-lS0"/>
                         <constraint firstItem="dx3-R2-B48" firstAttribute="centerX" secondItem="sws-a8-WMl" secondAttribute="centerX" id="pF1-aK-B23"/>
+                        <constraint firstItem="gQe-gf-Th8" firstAttribute="bottom" secondItem="dx3-R2-B48" secondAttribute="bottom" id="s2A-el-iYv"/>
+                        <constraint firstItem="brq-hz-etN" firstAttribute="height" secondItem="sws-a8-WMl" secondAttribute="height" multiplier="0.3" id="wPA-lJ-heY"/>
                         <constraint firstAttribute="trailing" secondItem="4QG-ba-L0N" secondAttribute="trailing" constant="15" id="xlp-Rl-RoW"/>
-                        <constraint firstItem="brq-hz-etN" firstAttribute="top" secondItem="sws-a8-WMl" secondAttribute="top" constant="15" id="xyN-hC-BdQ"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="sws-a8-WMl" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="8Dt-1K-amP"/>
+                <constraint firstItem="sws-a8-WMl" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="Dfe-Zk-9Na"/>
+                <constraint firstItem="sws-a8-WMl" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Pki-B4-8Pv"/>
                 <constraint firstItem="sws-a8-WMl" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Zke-XG-EIy"/>
+                <constraint firstItem="sws-a8-WMl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="exC-jB-n4h"/>
                 <constraint firstItem="sws-a8-WMl" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="rZ8-Nu-tue"/>
                 <constraint firstItem="sws-a8-WMl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="rbh-2w-8eZ"/>
+                <constraint firstItem="sws-a8-WMl" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="xkO-sj-tiA"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="139" y="80"/>
         </view>
     </objects>
+    <resources>
+        <image name="camera" catalog="system" width="64" height="48"/>
+    </resources>
 </document>

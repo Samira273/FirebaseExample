@@ -14,6 +14,17 @@ import PixelEngine
 
 class ProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, PixelEditViewControllerDelegate {
     
+    @IBOutlet weak var profileUpload: UIButton!
+    
+    @IBOutlet weak var coverUpload: UIButton!
+    @IBAction func uploadProfilePhoto(_ sender: Any) {
+        choosenPicType = .profilePic
+              selectPicFromGallery()
+    }
+    @IBAction func uploadCoverPhoto(_ sender: Any) {
+        choosenPicType = .coverPic
+        selectPicFromGallery()
+    }
     @IBOutlet private weak var coverPicImageView: UIImageView!
     @IBOutlet private weak var profilePicImageView: UIImageView!
     @IBOutlet private weak var profileName: UILabel!
@@ -29,34 +40,24 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let profilePicTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(profilePicTapped(tapGestureRecognizer:)))
-        profilePicImageView.addGestureRecognizer(profilePicTapGestureRecognizer)
-        let coverPicTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(coverPicTapped(tapGestureRecognizer:)))
-        coverPicImageView.addGestureRecognizer(coverPicTapGestureRecognizer)
+        coverPicImageView.contentMode = .scaleAspectFill
+        coverPicImageView.clipsToBounds = true
         profileScreenPresenter.profileViewController = self
         profileScreenPresenter.getDataFromFireStore()
         // Do any additional setup after loading the view.
     }
+
     
-    @objc func profilePicTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-        choosenPicType = .profilePic
-        selectPicFromGallery()
-    }
-    
-    @objc func coverPicTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-        print("cover pic tapped")
-        choosenPicType = .coverPic
-        selectPicFromGallery()
-    }
+   
     
     func goToEditController(with image: UIImage, ofType: PicType) {
         editPicType = ofType
-         editImageController = PixelEditViewController(image: image)
-        editImageController?.delegate = self
-        let navigationController = UINavigationController(rootViewController: editImageController ?? UIViewController())
-        self.present(navigationController, animated: true, completion: nil)
-        
- //       uploadSelectedPhoto(ofType: ofType)
+        DispatchQueue.main.async {
+            self.editImageController = PixelEditViewController(image: image)
+            self.editImageController?.delegate = self
+            let navigationController = UINavigationController(rootViewController: self.editImageController ?? UIViewController())
+            self.present(navigationController, animated: true, completion: nil)
+        }
     }
     
     func uploadSelectedPhoto(ofType: PicType) {
@@ -86,7 +87,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         case .coverPic:
             choosenCoverPic = image
             editedCoverPic = choosenCoverPic
-          //  uploadSelectedPhoto(ofType: .coverPic)
             imagePicker.dismiss(animated: true, completion: nil)
             goToEditController(with: choosenCoverPic ?? UIImage(), ofType: .coverPic)
         case .profilePic:
@@ -94,7 +94,6 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             editedProfilePic = choosenProfilePic
             imagePicker.dismiss(animated: true, completion: nil)
             goToEditController(with: choosenProfilePic ?? UIImage(), ofType: .profilePic)
-         //   uploadSelectedPhoto(ofType: .profilePic)
         case .none:
             print("none")
         }
@@ -120,10 +119,34 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     func displayProfile(profile: Profile) {
         roundCoverPicImageView()
         circleProfilePicImageView()
-        coverPicImageView.sd_setImage(with: URL(string: profile.coverPicUrl ?? ""), placeholderImage: UIImage(named: "placeholder.png"))
-        profilePicImageView.sd_setImage(with: URL(string: profile.profilePicUrl ?? ""), placeholderImage: UIImage(named: "placeholder.png"))
+        coverPicImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+                      coverPicImageView.sd_setImage(with: URL(string: profile.coverPicUrl ?? "")) { (image, error, cache, urls) in
+                          if (error != nil) {
+                              // Failed to load image
+                           self.coverPicImageView.image = UIImage(named: "ico_placeholder")
+                          } else {
+                              // Successful in loading image
+                           self.coverPicImageView.image = image
+                           self.coverUpload.isHidden = false
+                          }
+                      }
+        
+       profilePicImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+               profilePicImageView.sd_setImage(with: URL(string: profile.profilePicUrl ?? "")) { (image, error, cache, urls) in
+                   if (error != nil) {
+                       // Failed to load image
+                    self.profilePicImageView.image = UIImage(named: "ico_placeholder")
+                   } else {
+                       // Successful in loading image
+                    self.profilePicImageView.image = image
+                    self.profileUpload.isHidden = false
+                   }
+               }
         let name = (profile.firstName ?? "") + " " + (profile.lastName ?? "")
         profileName.text = name
+//        coverUpload.isHidden = false
+//        profileUpload.isHidden = false
+        
     }
     
     func pixelEditViewController(_ controller: PixelEditViewController, didEndEditing editingStack: EditingStack) {
@@ -131,9 +154,11 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
                 switch editPicType {
                 case .profilePic:
                     editedProfilePic = editImageController?.editingStack.makeRenderer().render()
+                    profilePicImageView.image = editedProfilePic
                     uploadSelectedPhoto(ofType: .profilePic)
                 case .coverPic:
                     editedCoverPic = editImageController?.editingStack.makeRenderer().render()
+                    coverPicImageView.image = editedCoverPic
                     uploadSelectedPhoto(ofType: .coverPic)
                 case .none:
                     print("failed isA lol")
@@ -144,8 +169,11 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     func pixelEditViewControllerDidCancelEditing(in controller: PixelEditViewController) {
         switch editPicType {
         case .coverPic:
+            coverPicImageView.image = choosenCoverPic
             uploadSelectedPhoto(ofType: .coverPic)
+            
         case .profilePic:
+            profilePicImageView.image = choosenProfilePic
             uploadSelectedPhoto(ofType: .profilePic)
         case .none:
             print("yalla ya ahbal")

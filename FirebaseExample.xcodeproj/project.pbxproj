@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5295FF5C21548767A0011A4A /* Pods_FirebaseExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A00894591314798C2D6BDA47 /* Pods_FirebaseExample.framework */; };
 		CE181062238C05BA0024BD1A /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE181061238C05BA0024BD1A /* Profile.swift */; };
+		CE5BF78F238D6AFB00E16ADC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5BF78E238D6AFB00E16ADC /* Extensions.swift */; };
 		CE61316B2383DFEE009891CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61316A2383DFEE009891CE /* AppDelegate.swift */; };
 		CE61316D2383DFEE009891CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE61316C2383DFEE009891CE /* SceneDelegate.swift */; };
 		CE6131742383DFEF009891CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE6131732383DFEF009891CE /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 		7BC58B966D3BBA2558671D89 /* Pods-FirebaseExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseExample.release.xcconfig"; path = "Target Support Files/Pods-FirebaseExample/Pods-FirebaseExample.release.xcconfig"; sourceTree = "<group>"; };
 		A00894591314798C2D6BDA47 /* Pods_FirebaseExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirebaseExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE181061238C05BA0024BD1A /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		CE5BF78E238D6AFB00E16ADC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CE6131672383DFEE009891CE /* FirebaseExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebaseExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE61316A2383DFEE009891CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE61316C2383DFEE009891CE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			children = (
 				CE61316A2383DFEE009891CE /* AppDelegate.swift */,
 				CE61316C2383DFEE009891CE /* SceneDelegate.swift */,
+				CE5BF78E238D6AFB00E16ADC /* Extensions.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE79064D238BF4110075289A /* ProfileScreenPresenter.swift in Sources */,
+				CE5BF78F238D6AFB00E16ADC /* Extensions.swift in Sources */,
 				CE181062238C05BA0024BD1A /* Profile.swift in Sources */,
 				CE790649238BE88A0075289A /* SignInViewController.swift in Sources */,
 				CE790642238BDF5C0075289A /* ProfilScreenModel.swift in Sources */,
