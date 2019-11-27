@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -41,42 +41,49 @@
                                 <constraint firstAttribute="width" constant="150" id="e7m-oi-llE"/>
                             </constraints>
                         </imageView>
-                        <button hidden="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJa-Np-vV5">
-                            <rect key="frame" x="358.5" y="225.5" width="35" height="35"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="35" id="gQP-mw-tLO"/>
-                                <constraint firstAttribute="width" constant="35" id="vyh-Yu-3th"/>
-                            </constraints>
-                            <state key="normal" image="camera" catalog="system"/>
-                            <connections>
-                                <action selector="uploadCoverPhoto:" destination="-1" eventType="touchUpInside" id="Lzd-NP-e8j"/>
-                            </connections>
-                        </button>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQe-gf-Th8">
-                            <rect key="frame" x="189.5" y="300.5" width="35" height="35"/>
+                            <rect key="frame" x="132" y="295" width="150" height="40"/>
+                            <color key="backgroundColor" white="1" alpha="0.50353167808219179" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="35" id="CLX-ne-o0C"/>
-                                <constraint firstAttribute="width" constant="35" id="wlA-GO-VID"/>
+                                <constraint firstAttribute="height" constant="40" id="jxi-Dz-x4Y"/>
                             </constraints>
-                            <state key="normal" image="camera" catalog="system"/>
+                            <state key="normal" image="camera" catalog="system">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="medium"/>
+                            </state>
                             <connections>
                                 <action selector="uploadProfilePhoto:" destination="-1" eventType="touchUpInside" id="muy-RM-IJk"/>
+                            </connections>
+                        </button>
+                        <button hidden="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJa-Np-vV5">
+                            <rect key="frame" x="20.5" y="220.5" width="50" height="40"/>
+                            <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="B41-IY-Cwu"/>
+                                <constraint firstAttribute="height" constant="40" id="Kt4-N3-4YY"/>
+                            </constraints>
+                            <state key="normal" image="camera" catalog="system">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="medium"/>
+                            </state>
+                            <connections>
+                                <action selector="uploadCoverPhoto:" destination="-1" eventType="touchUpInside" id="Lzd-NP-e8j"/>
                             </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
                         <constraint firstItem="brq-hz-etN" firstAttribute="centerX" secondItem="sws-a8-WMl" secondAttribute="centerX" id="3u6-1Y-D9R"/>
-                        <constraint firstItem="gQe-gf-Th8" firstAttribute="centerX" secondItem="dx3-R2-B48" secondAttribute="centerX" id="KkN-fv-lPt"/>
-                        <constraint firstItem="IJa-Np-vV5" firstAttribute="trailing" secondItem="brq-hz-etN" secondAttribute="trailing" id="MvH-5V-YhD"/>
+                        <constraint firstItem="IJa-Np-vV5" firstAttribute="bottom" secondItem="brq-hz-etN" secondAttribute="bottom" id="PyC-IF-6kW"/>
+                        <constraint firstItem="gQe-gf-Th8" firstAttribute="leading" secondItem="dx3-R2-B48" secondAttribute="leading" id="Q2M-ug-RAf"/>
                         <constraint firstItem="4QG-ba-L0N" firstAttribute="top" secondItem="dx3-R2-B48" secondAttribute="bottom" constant="10" id="Z8M-b6-1ls"/>
                         <constraint firstItem="4QG-ba-L0N" firstAttribute="leading" secondItem="sws-a8-WMl" secondAttribute="leading" constant="15" id="Zhf-9X-gn5"/>
                         <constraint firstItem="brq-hz-etN" firstAttribute="top" secondItem="sws-a8-WMl" secondAttribute="top" constant="15" id="al3-Lz-Ibf"/>
+                        <constraint firstItem="gQe-gf-Th8" firstAttribute="top" secondItem="dx3-R2-B48" secondAttribute="bottom" constant="-40.5" id="gfN-Y4-kg9"/>
                         <constraint firstItem="dx3-R2-B48" firstAttribute="top" secondItem="brq-hz-etN" secondAttribute="bottom" constant="-75" id="j3n-xC-I55"/>
-                        <constraint firstItem="IJa-Np-vV5" firstAttribute="bottom" secondItem="brq-hz-etN" secondAttribute="bottom" id="maf-hp-yGl"/>
+                        <constraint firstItem="gQe-gf-Th8" firstAttribute="trailing" secondItem="dx3-R2-B48" secondAttribute="trailing" id="kPN-fX-3ZI"/>
                         <constraint firstItem="brq-hz-etN" firstAttribute="width" secondItem="sws-a8-WMl" secondAttribute="width" multiplier="0.9" id="oNZ-14-lS0"/>
                         <constraint firstItem="dx3-R2-B48" firstAttribute="centerX" secondItem="sws-a8-WMl" secondAttribute="centerX" id="pF1-aK-B23"/>
-                        <constraint firstItem="gQe-gf-Th8" firstAttribute="bottom" secondItem="dx3-R2-B48" secondAttribute="bottom" id="s2A-el-iYv"/>
+                        <constraint firstItem="IJa-Np-vV5" firstAttribute="leading" secondItem="brq-hz-etN" secondAttribute="leading" id="rr9-Lp-cxU"/>
+                        <constraint firstItem="gQe-gf-Th8" firstAttribute="centerX" secondItem="dx3-R2-B48" secondAttribute="centerX" id="v1M-Dd-UrY"/>
                         <constraint firstItem="brq-hz-etN" firstAttribute="height" secondItem="sws-a8-WMl" secondAttribute="height" multiplier="0.3" id="wPA-lJ-heY"/>
                         <constraint firstAttribute="trailing" secondItem="4QG-ba-L0N" secondAttribute="trailing" constant="15" id="xlp-Rl-RoW"/>
                     </constraints>
@@ -94,7 +101,7 @@
                 <constraint firstItem="sws-a8-WMl" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="xkO-sj-tiA"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="139" y="80"/>
+            <point key="canvasLocation" x="137.68115942028987" y="79.6875"/>
         </view>
     </objects>
     <resources>

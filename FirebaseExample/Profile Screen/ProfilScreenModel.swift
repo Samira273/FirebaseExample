@@ -68,7 +68,6 @@ class ProfilScreenModel {
                        }
                    })
         }
-     //   self.retrieveDataFromFireStore()
     }
     
     func retrieveDataFromFireStore() {
